@@ -9,7 +9,7 @@ output, and use it as a quick-reference when building your own agents.
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download)
 - A [Microsoft Foundry](https://learn.microsoft.com/en-us/azure/ai-foundry/) project with a
-  chat-capable model deployed (e.g. `gpt-4o-mini`)
+  chat-capable model deployed (e.g. `gpt-5-mini`)
 - Signed in locally so `DefaultAzureCredential` can authenticate, e.g. `az login`
 
 Steps 1–4 and 6 make real calls to your deployed model — no mocking. Step 5 (Workflows)
@@ -22,7 +22,7 @@ Set these environment variables before running:
 | Variable | Required | Description |
 |---|---|---|
 | `AZURE_OPENAI_ENDPOINT` | Yes | Your Foundry project endpoint, e.g. `https://your-project.services.ai.azure.com` |
-| `AZURE_OPENAI_DEPLOYMENT_NAME` | No | Model deployment name. Defaults to `gpt-4o-mini` |
+| `AZURE_OPENAI_DEPLOYMENT_NAME` | No | Model deployment name. Defaults to `gpt-5-mini` |
 
 If `AZURE_OPENAI_ENDPOINT` isn't set, each sample fails fast with a clear message instead
 of an unhandled exception.

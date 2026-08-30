@@ -10,7 +10,7 @@ namespace AgentFrameworkCheatsheet.Configuration;
 /// </summary>
 internal static class AgentConfig
 {
-    private const string DefaultDeploymentName = "gpt-4o-mini";
+    private const string DefaultDeploymentName = "gpt-5-mini";
 
     /// <summary>Foundry project endpoint, e.g. https://your-project.services.ai.azure.com.</summary>
     public static string Endpoint =>

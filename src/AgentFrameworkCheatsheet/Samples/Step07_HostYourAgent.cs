@@ -27,7 +27,7 @@ internal static class Step07_HostYourAgent
 
         #region Register a chat client for agents to share
 
-        // endpoint is your Microsoft Foundry project endpoint; deploymentName e.g. "gpt-4o-mini".
+        // endpoint is your Microsoft Foundry project endpoint; deploymentName e.g. "gpt-5-mini".
         IChatClient chatClient = new AIProjectClient(new Uri(endpoint), new DefaultAzureCredential())
             .GetProjectOpenAIClient()
             .GetProjectResponsesClient()
