@@ -23,12 +23,11 @@ internal static class AgentConfig
 
     /// <summary>
     /// Creates the shared <see cref="AIProjectClient"/>.
-    /// NOTE: DefaultAzureCredential is convenient for local development but should be replaced with a
-    /// specific credential (e.g. ManagedIdentityCredential) in production to avoid latency and unintended
-    /// credential-probing fallback behavior.
+    /// NOTE: AzureCliCredential relies on `az login` and avoids DefaultAzureCredential's
+    /// credential-probing latency; swap for a specific credential (e.g. ManagedIdentityCredential) in production.
     /// </summary>
     public static AIProjectClient CreateProjectClient() =>
-        new(new Uri(Endpoint), new DefaultAzureCredential());
+        new(new Uri(Endpoint), new AzureCliCredential());
 
     /// <summary>
     /// Builds a raw <see cref="IChatClient"/> for scenarios (like the harness in Step 6) that operate

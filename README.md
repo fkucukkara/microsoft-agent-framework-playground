@@ -10,7 +10,7 @@ output, and use it as a quick-reference when building your own agents.
 - [.NET 10 SDK](https://dotnet.microsoft.com/download)
 - A [Microsoft Foundry](https://learn.microsoft.com/en-us/azure/ai-foundry/) project with a
   chat-capable model deployed (e.g. `gpt-5-mini`)
-- Signed in locally so `DefaultAzureCredential` can authenticate, e.g. `az login`
+- Signed in locally so `AzureCliCredential` can authenticate, e.g. `az login`
 
 Steps 1–4 and 6 make real calls to your deployed model — no mocking. Step 5 (Workflows)
 runs entirely offline. Step 7 is documentation only (see below).
@@ -61,9 +61,9 @@ where the code itself doesn't make the "why" obvious.
 ### Step 1 — Your First Agent
 Creates an `AIAgent` from an `AIProjectClient` and invokes it both non-streaming
 (`RunAsync`) and streaming (`RunStreamingAsync`).
-**Best practices:** prefer streaming for interactive UIs; swap `DefaultAzureCredential`
+**Best practices:** prefer streaming for interactive UIs; swap `AzureCliCredential`
 for a specific credential (e.g. `ManagedIdentityCredential`) in production to avoid
-credential-probing latency and fallback risk.
+relying on the Azure CLI being installed/signed in on the host.
 📖 [docs](https://learn.microsoft.com/en-us/agent-framework/get-started/your-first-agent)
 
 ### Step 2 — Add Tools
