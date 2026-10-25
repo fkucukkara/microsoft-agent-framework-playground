@@ -39,6 +39,7 @@ static void PrintMenu()
     Console.WriteLine("5. Workflows");
     Console.WriteLine("6. Agent Harness");
     Console.WriteLine("7. Host Your Agent (reference only)");
+    Console.WriteLine("8. Predefined Agent (Foundry Prompt Agent)");
     Console.WriteLine("0. Exit");
     Console.Write("Select a step: ");
 }
@@ -52,6 +53,7 @@ static Task RunStepAsync(string choice) => choice switch
     "5" => Step05_Workflows.RunAsync(),
     "6" => Step06_AgentHarness.RunAsync(),
     "7" => PrintStep07Notice(),
+    "8" => Step08_PredefinedAgent.RunAsync(),
     _ => PrintUnknownChoice(),
 };
 

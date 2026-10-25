@@ -23,6 +23,8 @@ Set these environment variables before running:
 |---|---|---|
 | `AZURE_OPENAI_ENDPOINT` | Yes | Your Foundry project endpoint, e.g. `https://your-project.services.ai.azure.com` |
 | `AZURE_OPENAI_DEPLOYMENT_NAME` | No | Model deployment name. Defaults to `gpt-5-mini` |
+| `FOUNDRY_AGENT_NAME` | No | Name of an existing Prompt Agent for Step 8. Defaults to a sample agent name — set this to your own agent's name |
+| `FOUNDRY_PROJECT_ENDPOINT` | No | Project-scoped endpoint for Step 8 (Prompt Agent admin calls are project-scoped, unlike the account-root endpoint above), e.g. `https://your-account.services.ai.azure.com/api/projects/your-project` |
 
 If `AZURE_OPENAI_ENDPOINT` isn't set, each sample fails fast with a clear message instead
 of an unhandled exception.
@@ -49,7 +51,8 @@ src/AgentFrameworkCheatsheet/
     ├── Step04_MemoryAndPersistence.cs
     ├── Step05_Workflows.cs
     ├── Step06_AgentHarness.cs
-    └── Step07_HostYourAgent.cs                 # Reference only, see below
+    ├── Step07_HostYourAgent.cs                 # Reference only, see below
+    └── Step08_PredefinedAgent.cs
 ```
 
 Each sample file uses `#region` blocks to separate the concepts being taught (tool
@@ -113,6 +116,17 @@ contains the fully annotated docs code as a reference — copy it into a
 convert multi-agent workflows to an `AIAgent` (`AddAsAIAgent`) before exposing them
 through a hosting protocol.
 📖 [docs](https://learn.microsoft.com/en-us/agent-framework/get-started/hosting)
+
+### Step 8 — Predefined Agent (Foundry Prompt Agent)
+Connects to a Prompt Agent that already exists in Microsoft Foundry (created in the
+portal or via the Agents API) instead of defining one in code: looks it up by name with
+`AgentAdministrationClient.GetAgentAsync`, wraps it as a `FoundryAgent` via
+`AsAIAgent(agentRecord)`, then runs it like any other `AIAgent`.
+**Best practices:** the Foundry-side definition (model, instructions, hosted tools) is
+authoritative — it can't be overridden at runtime; pin an explicit version with
+`AsAIAgent(new AgentReference(name, version))` when the app must not pick up newly
+published agent versions automatically.
+📖 [docs](https://learn.microsoft.com/agent-framework/integrations/by-component/agent-services/foundry)
 
 ## NuGet packages used
 
