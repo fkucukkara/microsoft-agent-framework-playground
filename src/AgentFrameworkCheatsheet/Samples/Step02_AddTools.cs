@@ -1,8 +1,8 @@
-using System.ComponentModel;
 using AgentFrameworkCheatsheet.Configuration;
 using Azure.AI.Projects;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
+using System.ComponentModel;
 
 namespace AgentFrameworkCheatsheet.Samples;
 

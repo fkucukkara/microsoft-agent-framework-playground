@@ -1,8 +1,6 @@
 using AgentFrameworkCheatsheet.Configuration;
-using Azure.AI.Extensions.OpenAI;
 using Azure.AI.Projects;
 using Azure.AI.Projects.Agents;
-using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Foundry;
 
 namespace AgentFrameworkCheatsheet.Samples;
